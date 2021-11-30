@@ -62,6 +62,9 @@ public class PrimitiveBuilder extends ObjectBuilder{
 
     @Override
     public String toString() {
+        if (this.class2create == String.class) {
+            return "\"" + this.object.toString() + "\"";
+        }
         return this.object.toString();
     }
 }

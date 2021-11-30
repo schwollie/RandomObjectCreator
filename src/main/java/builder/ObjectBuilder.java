@@ -75,7 +75,7 @@ public class ObjectBuilder {
     }
 
     public String toString() {
-        String s = "new " + class2create.getName() + "(";
+        String s = "new " + class2create.getSimpleName() + "(";
         int count = 0;
         for (ObjectBuilder param : parameters) {
             s += param.toString();

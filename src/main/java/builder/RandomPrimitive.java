@@ -8,7 +8,7 @@ import java.util.Random;
 public class RandomPrimitive {
 
     public static int getRandomInt(RangeSettings r, Random random) {
-        return ((int)random.nextLong()) ;
+        return getRandomInteger(r.getIntegerRange(), random) ;
     }
 
     public static short getRandomShort(RangeSettings r, Random random) {
@@ -36,7 +36,7 @@ public class RandomPrimitive {
     }
 
     public static char getRandomChar(RangeSettings r, Random random) {
-        return (char) getRandomInt(r, random);
+        return (char) getRandomInteger(r.getCharacterRange(), random);
     }
 
     public static String getRandomString(RangeSettings r, Random random) {
@@ -49,8 +49,12 @@ public class RandomPrimitive {
         return new String(chars);
     }
 
-    private static int getRandomInt(Range<Integer> range, Random random) {
-        return random.nextInt(range.getMaxValue() + Math.abs(range.getMinValue())) + range.getMinValue();
+    private static int getRandomInteger(Range<Integer> range, Random random) {
+        double d = random.nextDouble();
+        int rand = (int)(random.nextDouble() * ((long)range.getMaxValue() - (long)range.getMinValue() +1) + range.getMinValue());
+        return rand;
+        //return random.nextInt(range.getMaxValue() - range.getMinValue()) + range.getMinValue();
+        //return random.nextInt(range.getMaxValue() + Math.abs(range.getMinValue())) + range.getMinValue();
     }
 
 }
